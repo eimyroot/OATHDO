@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from goverdocs import gate
+from goverdocs.classifier import classify
 from goverdocs.planner import load_matrix
 
 
@@ -92,7 +93,7 @@ def test_matrix_drift_ignores_matrix_only_markdown_validator_events(tmp_path: Pa
     assert gaps == []
 
 
-def test_matrix_drift_still_detects_path_mismatch_inside_classifier_domain(tmp_path: Path) -> None:
+def test_src_change_emits_architecture_event_and_does_not_drift(tmp_path: Path) -> None:
     path = _matrix_path(
         tmp_path,
         [
@@ -104,14 +105,14 @@ def test_matrix_drift_still_detects_path_mismatch_inside_classifier_domain(tmp_p
         ],
     )
 
+    emitted_events = {event.name for event in classify(["src/goverdocs/gate.py"], "")}
+    assert "architecture_change" in emitted_events
+
     gaps = gate._matrix_detection_gaps(
         ["src/goverdocs/gate.py"],
         "",
         load_matrix(path),
-        {"project_state_changed"},
+        emitted_events,
     )
 
-    assert len(gaps) == 1
-    assert gaps[0]["code"] == "CLASSIFIER_MATRIX_DRIFT"
-    assert gaps[0]["subject"] == "DOC-EVT-011"
-    assert "architecture_change" in gaps[0]["message"]
+    assert gaps == []
