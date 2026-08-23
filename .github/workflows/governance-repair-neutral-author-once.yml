@@ -1,0 +1,58 @@
+name: governance-repair-neutral-author-once
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-neutral-governance-repair-pr:
+    if: >-
+      github.event.issue.number == 85 &&
+      github.event.comment.body == '/governance-repair-neutral-author' &&
+      github.event.comment.user.id == 268458602
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create bounded neutral-author governance repair PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_BRANCH: fix/governance-bootstrap-matrix-r1
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          compare="$(gh api "repos/$GITHUB_REPOSITORY/compare/main...$HEAD_BRANCH")"
+          ahead_by="$(jq -r '.ahead_by' <<<"$compare")"
+          if [ "$ahead_by" = "0" ]; then
+            echo "repair branch is not ahead of main; nothing to create"
+            exit 0
+          fi
+
+          mapfile -t files < <(jq -r '.files[].filename' <<<"$compare")
+          if [ "${#files[@]}" -ne 1 ] || [ "${files[0]}" != "automation/documentation_decision_matrix.yaml" ]; then
+            echo "repair branch diff is outside the single-file allowlist" >&2
+            printf 'changed: %s\n' "${files[@]}" >&2
+            exit 2
+          fi
+
+          existing="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$HEAD_BRANCH" --state open --json number --jq 'length')"
+          if [ "$existing" != "0" ]; then
+            echo "open PR already exists for $HEAD_BRANCH"
+            exit 0
+          fi
+
+          gh api \
+            --method POST \
+            "repos/$GITHUB_REPOSITORY/pulls" \
+            -f title='fix(governance): bootstrap classifier/matrix reconciliation' \
+            -f head="$HEAD_BRANCH" \
+            -f base='main' \
+            -f body='Bot-authored bounded governance-repair PR for issue #85.\n\n## Change rationale\nBootstrap or restore the canonical architecture-change path declaration so the base-evaluated GOVERDOCS gate can reconcile classifier and matrix without disabling any required check or authority rule.\n\n## Affected scope\nExactly one allowed file: `automation/documentation_decision_matrix.yaml`. The helper refuses any wider diff.\n\n## Verification requirements\nCritical governance authority remains fail-closed: exact-head project-owner plus independent-reviewer quorum, fresh CI, GOVERDOCS Governance Gate, no unresolved threads, and expected-head server merge.\n\n## Rollback\nLeave unmerged on any failure; otherwise revert only through a separately governed PR.\n\nTracking: #85.' \
+            >/tmp/governance-repair-pr.json
+
+          pr_number="$(jq -r '.number' /tmp/governance-repair-pr.json)"
+          gh issue comment 85 --repo "$GITHUB_REPOSITORY" --body "Neutral-author governance repair PR created: #$pr_number from $HEAD_BRANCH."
