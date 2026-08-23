@@ -12,7 +12,7 @@ PATH_RULES: list[tuple[str, list[str], float]] = [
     ("infrastructure_change", ["infra/**", "terraform/**", "k8s/**", "Dockerfile", "docker-compose*.yml"], 0.92),
     ("dependency_change", ["pyproject.toml", "requirements*.txt", "package.json", "package-lock.json", "pnpm-lock.yaml", "yarn.lock", "poetry.lock", "uv.lock"], 0.98),
     ("governance_change", ["docs/governance/**", "automation/documentation_policy.yaml", "automation/documentation_decision_matrix.yaml"], 0.96),
-    ("architecture_change", ["docs/architecture/**", "**/architecture/**"], 0.90),
+    ("architecture_change", ["docs/architecture/**", "**/architecture/**", "src/**"], 0.90),
     ("api_contract_change", ["openapi.*", "api/**", "**/routes/**", "**/endpoints/**"], 0.82),
     ("data_model_change", ["migrations/**", "schemas/**", "**/models/**"], 0.82),
     ("document_changed", ["**/*.md"], 0.99),
