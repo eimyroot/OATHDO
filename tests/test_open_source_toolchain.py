@@ -7,6 +7,8 @@ from pathlib import Path
 
 import yaml
 
+from goverdocs.registry import build_registry, build_status_summary
+
 ROOT = Path(__file__).resolve().parents[1]
 PYPROJECT = ROOT / "pyproject.toml"
 MKDOCS = ROOT / "mkdocs.yml"
@@ -15,6 +17,7 @@ QUALITY = ROOT / ".github/workflows/quality.yml"
 SCORECARD = ROOT / ".github/workflows/scorecard.yml"
 TEMPLATE = ROOT / "templates/adr/MADR_GOVERDOCS_TEMPLATE.md"
 NOTICES = ROOT / "THIRD_PARTY_NOTICES.md"
+POLICY = ROOT / "automation/documentation_policy.yaml"
 FULL_SHA = re.compile(r"^[0-9a-f]{40}$")
 
 
@@ -102,11 +105,15 @@ def test_madr_adaptation_and_notices_record_provenance() -> None:
 
 def test_governance_records_and_generated_artifacts_are_current() -> None:
     registry = yaml.safe_load((ROOT / "manifests/DOCUMENT_REGISTRY.yaml").read_text(encoding="utf-8"))
-    documents = {item["id"]: item for item in registry["documents"]}
     status = json.loads((ROOT / "manifests/DOCUMENT_STATUS_SUMMARY.json").read_text(encoding="utf-8"))
     graph = json.loads((ROOT / "manifests/RELATIONSHIP_GRAPH.json").read_text(encoding="utf-8"))
     index = (ROOT / "DOCUMENTATION_INDEX.md").read_text(encoding="utf-8")
 
+    expected_registry = build_registry(ROOT, POLICY)
+    assert registry == expected_registry
+    assert status == build_status_summary(expected_registry)
+
+    documents = {item["id"]: item for item in registry["documents"]}
     assert documents["ADR-0003"]["status"] == "accepted"
     assert documents["REV-0002"]["status"] == "accepted"
     assert documents["WB-0002"]["status"] == "completed"
@@ -123,40 +130,38 @@ def test_governance_records_and_generated_artifacts_are_current() -> None:
         "docs/work-blocks/completed/"
         "WB-0003-constitutional-framework.md"
     )
-    assert status == {
-        "generated_at": "2026-07-26T00:00:00+00:00",
-        "document_count": 24,
-        "status_counts": {
-            "accepted": 7,
-            "active": 15,
-            "completed": 2,
-        },
+
+    expected_nodes = {
+        (item["id"], item["path"], item.get("type"))
+        for item in registry["documents"]
+        if item.get("id")
     }
-    node_ids = {node["id"] for node in graph["nodes"]}
-    assert {
-        "ADR-0003",
-        "WB-0002",
-        "REV-0002",
-        "ADR-0004",
-        "WB-0003",
-        "REV-0003",
-        "CONST-FRAMEWORK-GOVERDOCS",
-        "PRODUCT-MODE-GOVERDOCS",
-    } <= node_ids
-    assert "`ADR-0003`" in index
-    assert "`REV-0002`" in index
-    assert "`ADR-0004`" in index
-    assert "`WB-0003`" in index
-    assert "`REV-0003`" in index
-    assert "`CONST-FRAMEWORK-GOVERDOCS`" in index
-    assert "`PRODUCT-MODE-GOVERDOCS`" in index
-    assert (
-        "[docs/work-blocks/completed/"
-        "WB-0002-open-source-governance-toolchain.md]"
-    ) in index
-    assert (
-        "[docs/work-blocks/completed/"
-        "WB-0003-constitutional-framework.md]"
-    ) in index
+    actual_nodes = {
+        (node["id"], node["path"], node.get("type"))
+        for node in graph["nodes"]
+    }
+    assert actual_nodes == expected_nodes
+
+    expected_edges: set[tuple[str, str, str]] = set()
+    for item in registry["documents"]:
+        doc_id = item.get("id")
+        if not doc_id:
+            continue
+        for related in item.get("related") or []:
+            expected_edges.add((doc_id, related, "related"))
+        if item.get("supersedes"):
+            expected_edges.add((doc_id, item["supersedes"], "supersedes"))
+    actual_edges = {
+        (edge["from"], edge["to"], edge["type"])
+        for edge in graph["edges"]
+    }
+    assert actual_edges == expected_edges
+
+    for item in registry["documents"]:
+        if item["path"] == "DOCUMENTATION_INDEX.md":
+            continue
+        assert f"`{item['id']}`" in index
+        assert f"[{item['path']}]({item['path']})" in index
+
     assert "docs/work-blocks/active/WB-0002-open-source-governance-toolchain.md" not in index
     assert "docs/work-blocks/active/WB-0003-constitutional-framework.md" not in index
