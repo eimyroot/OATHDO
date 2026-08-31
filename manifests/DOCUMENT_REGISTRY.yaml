@@ -17,7 +17,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: '2026-07-26'
+  updated: '2026-08-17'
   related:
   - PRODUCT-MODE-GOVERDOCS
   - ADR-0004
@@ -32,7 +32,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: '2026-07-26'
+  updated: '2026-08-17'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - ADR-0004
@@ -164,7 +164,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: '2026-07-26'
+  updated: '2026-08-17'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - PRODUCT-MODE-GOVERDOCS
@@ -337,7 +337,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: '2026-07-26'
+  updated: '2026-08-17'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - PRODUCT-MODE-GOVERDOCS
@@ -405,7 +405,7 @@ documents:
   status: completed
   canonical: true
   owner: GOVERDOCS
-  updated: '2026-07-26'
+  updated: '2026-08-17'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - PRODUCT-MODE-GOVERDOCS
@@ -420,9 +420,10 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: '2026-07-26'
+  updated: '2026-08-17'
   related:
   - WB-0001
+  - WB-0004
   supersedes: null
   superseded_by: null
 - id: CTX-GOVERDOCS
