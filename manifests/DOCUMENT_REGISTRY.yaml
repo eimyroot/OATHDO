@@ -1,4 +1,4 @@
-generated_at: 2026-07-26T00:00:00+00:00
+generated_at: '2026-08-23T00:00:00+00:00'
 documents:
 - id: DOC-INDEX-GOVERDOCS
   path: DOCUMENTATION_INDEX.md
@@ -6,7 +6,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-08-23'
   related:
   - GOV-0001
   supersedes: null
@@ -17,7 +17,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - PRODUCT-MODE-GOVERDOCS
   - ADR-0004
@@ -32,7 +32,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - ADR-0004
@@ -47,7 +47,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - EPIC-0001
   - ARCH-0001
@@ -68,11 +68,38 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-19
+  updated: '2026-07-19'
   related:
   - ADR-0001
   - GOV-0001
   - SEC-0001
+  supersedes: null
+  superseded_by: null
+- id: ARCH-0002
+  path: docs/architecture/ARCH-0002-product-architecture-baseline.md
+  type: architecture
+  status: proposed
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - ARCH-0001
+  - ADR-0001
+  - ADR-0004
+  - CONST-FRAMEWORK-GOVERDOCS
+  - PRODUCT-MODE-GOVERDOCS
+  supersedes: null
+  superseded_by: null
+- id: ARCH-0003
+  path: docs/architecture/ARCH-0003-governance-classifier-matrix-reconciliation.md
+  type: architecture
+  status: proposed
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-23'
+  related:
+  - ARCH-0002
+  - ADR-0005
   supersedes: null
   superseded_by: null
 - id: ADR-0001
@@ -81,11 +108,27 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-19
+  updated: '2026-07-19'
   related:
   - ARCH-0001
   - GOV-0001
   - EPIC-0001
+  supersedes: null
+  superseded_by: null
+- id: ADR-0005
+  path: docs/decisions/architecture/ADR-0005-evidence-driven-change-governance-control-plane.md
+  type: architecture-decision
+  status: proposed
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - ARCH-0001
+  - ARCH-0002
+  - ADR-0001
+  - ADR-0004
+  - CONST-FRAMEWORK-GOVERDOCS
+  - PRODUCT-MODE-GOVERDOCS
   supersedes: null
   superseded_by: null
 - id: ADR-0002
@@ -94,7 +137,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-23
+  updated: '2026-07-23'
   related:
   - GOV-0001
   - PROJECT-STATE-GOVERDOCS
@@ -107,7 +150,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-24
+  updated: '2026-07-24'
   related:
   - EPIC-0001
   - WB-0002
@@ -121,7 +164,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - PRODUCT-MODE-GOVERDOCS
@@ -136,7 +179,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-24
+  updated: '2026-07-24'
   related:
   - WB-0001
   - WB-0002
@@ -151,11 +194,101 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-19
+  updated: '2026-07-19'
   related:
   - ADR-0001
   - ARCH-0001
   - SEC-0001
+  supersedes: null
+  superseded_by: null
+- id: GOV-0004
+  path: docs/governance/R10-ENFORCEMENT-RESILIENCE.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0002
+  supersedes: null
+  superseded_by: null
+- id: GOV-0006
+  path: docs/governance/R11-ENROLLMENT.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0005
+  supersedes: null
+  superseded_by: null
+- id: GOV-0005
+  path: docs/governance/R11-GOVERNANCE-AUTHORITY.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0004
+  supersedes: null
+  superseded_by: null
+- id: GOV-0007
+  path: docs/governance/R11-IMPLEMENTATION-NOTE.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0005
+  - GOV-0006
+  supersedes: null
+  superseded_by: null
+- id: GOV-0010
+  path: docs/governance/R11-POSITIVE-LIVE-QUORUM-PROOF.md
+  type: governance
+  status: active
+  canonical: true
+  owner: OATHDO
+  updated: '2026-08-18'
+  related:
+  - GOV-0005
+  - GOV-0008
+  supersedes: null
+  superseded_by: null
+- id: GOV-0008
+  path: docs/governance/R11-STATUS.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0005
+  supersedes: null
+  superseded_by: null
+- id: GOV-0003
+  path: docs/governance/R9-ENFORCEMENT-PROOF.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0002
+  supersedes: null
+  superseded_by: null
+- id: GOV-0002
+  path: docs/governance/R9-HARD-ENFORCEMENT.md
+  type: governance
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - GOV-0001
   supersedes: null
   superseded_by: null
 - id: OPS-0001
@@ -164,7 +297,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-24
+  updated: '2026-07-24'
   related:
   - WB-0001
   - WB-0002
@@ -178,7 +311,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-19
+  updated: '2026-07-19'
   related:
   - EPIC-0001
   - WB-0001
@@ -190,7 +323,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-24
+  updated: '2026-07-24'
   related:
   - EPIC-0001
   - WB-0002
@@ -204,7 +337,7 @@ documents:
   status: accepted
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - PRODUCT-MODE-GOVERDOCS
@@ -218,7 +351,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-19
+  updated: '2026-07-19'
   related:
   - ADR-0001
   - GOV-0001
@@ -231,9 +364,24 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-19
+  updated: '2026-07-19'
   related:
   - EPIC-0001
+  - PROJECT-STATE-GOVERDOCS
+  supersedes: null
+  superseded_by: null
+- id: WB-0004
+  path: docs/work-blocks/active/WB-0004-product-baseline-and-governance-gate-r1.md
+  type: work-block
+  status: active
+  canonical: true
+  owner: GOVERDOCS
+  updated: '2026-08-17'
+  related:
+  - ARCH-0002
+  - ADR-0005
+  - ARCH-0001
+  - PRODUCT-MODE-GOVERDOCS
   - PROJECT-STATE-GOVERDOCS
   supersedes: null
   superseded_by: null
@@ -243,7 +391,7 @@ documents:
   status: completed
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-24
+  updated: '2026-07-24'
   related:
   - EPIC-0001
   - ADR-0003
@@ -257,7 +405,7 @@ documents:
   status: completed
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - CONST-FRAMEWORK-GOVERDOCS
   - PRODUCT-MODE-GOVERDOCS
@@ -272,7 +420,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - WB-0001
   supersedes: null
@@ -283,7 +431,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - PROJECT-STATE-GOVERDOCS
   - WB-0001
@@ -304,7 +452,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - ADR-0001
   - ADR-0002
@@ -318,7 +466,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-23
+  updated: '2026-07-23'
   related:
   - EPIC-0001
   - ADR-0002
@@ -330,7 +478,7 @@ documents:
   status: active
   canonical: true
   owner: GOVERDOCS
-  updated: 2026-07-26
+  updated: '2026-07-26'
   related:
   - WB-0001
   - WB-0002
