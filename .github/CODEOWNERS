@@ -1,0 +1,3 @@
+# Default ownership for repository changes.
+# Keep this file aligned with the maintainers who can review security and release changes.
+* @eimyroot
