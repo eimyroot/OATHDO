@@ -26,8 +26,23 @@
       "type": "architecture"
     },
     {
+      "id": "ARCH-0002",
+      "path": "docs/architecture/ARCH-0002-product-architecture-baseline.md",
+      "type": "architecture"
+    },
+    {
+      "id": "ARCH-0003",
+      "path": "docs/architecture/ARCH-0003-governance-classifier-matrix-reconciliation.md",
+      "type": "architecture"
+    },
+    {
       "id": "ADR-0001",
       "path": "docs/decisions/architecture/ADR-0001-deterministic-governor-first.md",
+      "type": "architecture-decision"
+    },
+    {
+      "id": "ADR-0005",
+      "path": "docs/decisions/architecture/ADR-0005-evidence-driven-change-governance-control-plane.md",
       "type": "architecture-decision"
     },
     {
@@ -53,6 +68,46 @@
     {
       "id": "GOV-0001",
       "path": "docs/governance/GOV-DOCUMENTATION-AUTOMATION.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0004",
+      "path": "docs/governance/R10-ENFORCEMENT-RESILIENCE.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0006",
+      "path": "docs/governance/R11-ENROLLMENT.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0005",
+      "path": "docs/governance/R11-GOVERNANCE-AUTHORITY.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0007",
+      "path": "docs/governance/R11-IMPLEMENTATION-NOTE.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0010",
+      "path": "docs/governance/R11-POSITIVE-LIVE-QUORUM-PROOF.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0008",
+      "path": "docs/governance/R11-STATUS.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0003",
+      "path": "docs/governance/R9-ENFORCEMENT-PROOF.md",
+      "type": "governance"
+    },
+    {
+      "id": "GOV-0002",
+      "path": "docs/governance/R9-HARD-ENFORCEMENT.md",
       "type": "governance"
     },
     {
@@ -83,6 +138,11 @@
     {
       "id": "WB-0001",
       "path": "docs/work-blocks/active/WB-0001-foundation.md",
+      "type": "work-block"
+    },
+    {
+      "id": "WB-0004",
+      "path": "docs/work-blocks/active/WB-0004-product-baseline-and-governance-gate-r1.md",
       "type": "work-block"
     },
     {
@@ -248,6 +308,41 @@
       "type": "related"
     },
     {
+      "from": "ARCH-0002",
+      "to": "ARCH-0001",
+      "type": "related"
+    },
+    {
+      "from": "ARCH-0002",
+      "to": "ADR-0001",
+      "type": "related"
+    },
+    {
+      "from": "ARCH-0002",
+      "to": "ADR-0004",
+      "type": "related"
+    },
+    {
+      "from": "ARCH-0002",
+      "to": "CONST-FRAMEWORK-GOVERDOCS",
+      "type": "related"
+    },
+    {
+      "from": "ARCH-0002",
+      "to": "PRODUCT-MODE-GOVERDOCS",
+      "type": "related"
+    },
+    {
+      "from": "ARCH-0003",
+      "to": "ARCH-0002",
+      "type": "related"
+    },
+    {
+      "from": "ARCH-0003",
+      "to": "ADR-0005",
+      "type": "related"
+    },
+    {
       "from": "ADR-0001",
       "to": "ARCH-0001",
       "type": "related"
@@ -260,6 +355,36 @@
     {
       "from": "ADR-0001",
       "to": "EPIC-0001",
+      "type": "related"
+    },
+    {
+      "from": "ADR-0005",
+      "to": "ARCH-0001",
+      "type": "related"
+    },
+    {
+      "from": "ADR-0005",
+      "to": "ARCH-0002",
+      "type": "related"
+    },
+    {
+      "from": "ADR-0005",
+      "to": "ADR-0001",
+      "type": "related"
+    },
+    {
+      "from": "ADR-0005",
+      "to": "ADR-0004",
+      "type": "related"
+    },
+    {
+      "from": "ADR-0005",
+      "to": "CONST-FRAMEWORK-GOVERDOCS",
+      "type": "related"
+    },
+    {
+      "from": "ADR-0005",
+      "to": "PRODUCT-MODE-GOVERDOCS",
       "type": "related"
     },
     {
@@ -363,6 +488,56 @@
       "type": "related"
     },
     {
+      "from": "GOV-0004",
+      "to": "GOV-0002",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0006",
+      "to": "GOV-0005",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0005",
+      "to": "GOV-0004",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0007",
+      "to": "GOV-0005",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0007",
+      "to": "GOV-0006",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0010",
+      "to": "GOV-0005",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0010",
+      "to": "GOV-0008",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0008",
+      "to": "GOV-0005",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0003",
+      "to": "GOV-0002",
+      "type": "related"
+    },
+    {
+      "from": "GOV-0002",
+      "to": "GOV-0001",
+      "type": "related"
+    },
+    {
       "from": "OPS-0001",
       "to": "WB-0001",
       "type": "related"
@@ -458,6 +633,31 @@
       "type": "related"
     },
     {
+      "from": "WB-0004",
+      "to": "ARCH-0002",
+      "type": "related"
+    },
+    {
+      "from": "WB-0004",
+      "to": "ADR-0005",
+      "type": "related"
+    },
+    {
+      "from": "WB-0004",
+      "to": "ARCH-0001",
+      "type": "related"
+    },
+    {
+      "from": "WB-0004",
+      "to": "PRODUCT-MODE-GOVERDOCS",
+      "type": "related"
+    },
+    {
+      "from": "WB-0004",
+      "to": "PROJECT-STATE-GOVERDOCS",
+      "type": "related"
+    },
+    {
       "from": "WB-0002",
       "to": "EPIC-0001",
       "type": "related"
@@ -505,6 +705,11 @@
     {
       "from": "ACTIVE-GOVERDOCS",
       "to": "WB-0001",
+      "type": "related"
+    },
+    {
+      "from": "ACTIVE-GOVERDOCS",
+      "to": "WB-0004",
       "type": "related"
     },
     {
