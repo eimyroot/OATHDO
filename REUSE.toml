@@ -1,7 +1,7 @@
 version = 1
-SPDX-PackageName = "GOVERDOCS"
+SPDX-PackageName = "OATHDO"
 SPDX-PackageSupplier = "Eimy Herrer"
-SPDX-PackageDownloadLocation = "https://github.com/nulleimy/Goverdocs"
+SPDX-PackageDownloadLocation = "https://github.com/eimyroot/OATHDO"
 
 [[annotations]]
 path = ["*", "**/*"]
