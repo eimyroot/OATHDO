@@ -1,23 +1,37 @@
-# Bezpečnostní politika
+# Security policy
 
-## Podporovaný rozsah
+## Supported scope
 
-Bezpečnostní opravy směřují do aktuální výchozí větve. Dokud je OATHDO před vydáním, viditelnost repozitáře ani zelené CI samy o sobě nedokládají připravenost pro produkci.
+Security fixes target the current default branch. While OATHDO remains pre-release/alpha, repository visibility or green CI alone must not be interpreted as a production-readiness guarantee.
 
-## Hlášení zranitelnosti
+## Reporting a vulnerability
 
-Nezveřejňuj zranitelnosti, přihlašovací údaje, osobní data, neveřejné URL ani detaily exploitu ve veřejném issue nebo pull requestu. Použij GitHub private vulnerability reporting, je-li zapnutý. Jinak založ pouze stručnou veřejnou žádost o soukromý kontakt bez citlivých detailů.
+Do not publish vulnerabilities, credentials, personal data, non-public URLs, or exploit details in a public issue or pull request.
 
-Uveď dotčenou revizi, komponentu, předpoklady útoku, minimální reprodukci, dopad, očekávané bezpečné chování a případný návrh opravy.
+Prefer GitHub Private Vulnerability Reporting when it is enabled for this repository. If no private reporting channel is available, create only a minimal public request for a private contact path and omit sensitive details.
 
-## Bezpečnostní minimum
+A useful report includes:
 
-- nikdy necommituj tajné údaje ani produkční data;
-- privilegovaná rozhodnutí a autorizaci vynucuj na serveru;
-- používej nejmenší oprávnění a deny-by-default;
-- validuj nedůvěryhodné vstupy a omezuj spotřebu zdrojů;
-- zachovej auditní důkazy bez zapisování tajných údajů;
-- chybějící nebo neověřitelné důkazy nesmí znamenat úspěch;
-- uniklé přihlašovací údaje vždy zneplatni nebo otoč.
+- affected revision and component;
+- attack prerequisites;
+- minimal reproduction;
+- security impact;
+- expected safe behavior;
+- proposed mitigation, if known.
 
-V předprodukční fázi není garantována reakční ani opravná SLA.
+## Security baseline
+
+- never commit secrets or production data;
+- enforce privileged decisions and authorization server-side;
+- use least privilege and deny-by-default boundaries;
+- validate untrusted input and bound resource consumption;
+- preserve audit evidence without recording secrets;
+- missing or unverifiable evidence must not mean success;
+- revoke or rotate exposed credentials;
+- do not weaken governance rules, required checks, or authority policy to make a test pass.
+
+## Cockpit boundary
+
+The local cockpit is an observability surface, not an authority surface. It binds to loopback by default, exposes read-only HTTP routes, and must not be extended with repository mutation, approval, merge, secret, or token capabilities without a separately governed security/architecture decision.
+
+No response or remediation SLA is guaranteed during the pre-release phase.

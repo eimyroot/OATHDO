@@ -1,29 +1,40 @@
 # OATHDO
 
-**OATHDO** je deterministický dokumentační governor pro projekty řízené lidmi i AI agenty. Propojuje změny v repozitáři s dokumentací, rozhodnutími, schváleními a auditní evidencí, které mají změnu doprovázet.
+**OATHDO** is a deterministic documentation governor for projects operated by humans and AI agents. It connects repository changes with the documentation, decisions, approvals, policy checks, and audit evidence that should accompany them.
 
-!!! important "Prezentační vrstva"
-    Tento web je odvozená prezentační vrstva. Kanonickým zdrojem pravdy jsou soubory a Git historie repozitáře OATHDO. Build webu nemění canonical governance obsah a není automaticky publikován.
+!!! important "Presentation layer"
+    This documentation site is a derived presentation layer. Canonical truth remains the OATHDO repository files and Git history. Building the site does not mutate canonical governance content and does not imply publication.
 
-!!! note "CLI kompatibilita"
-    Produktový a repozitářový název je OATHDO. Python package a CLI v aktuální kompatibilní řadě stále používají jméno `goverdocs`.
+!!! note "CLI compatibility"
+    The product and repository are named OATHDO. The Python package and CLI remain named `goverdocs` in the current compatibility line.
 
-## Co systém poskytuje
+## What the system provides
 
-- deterministickou klasifikaci změn,
-- rozhodovací matici a plán dokumentačních operací,
-- validaci metadata, vztahů, supersession a lokálních odkazů,
-- registry, relationship graph a auditní receipts,
-- explicitní approval a authority hranice,
-- exact-head GitHub governance enforcement,
-- reprodukovatelné distribuční artefakty.
+- deterministic change classification;
+- a decision matrix and documentation-operation planning;
+- validation of metadata, relationships, supersession, and local links;
+- registries, a relationship graph, and audit receipts;
+- explicit approval and authority boundaries;
+- exact-head GitHub governance enforcement;
+- reproducible distribution artifacts;
+- a read-only local operator cockpit.
 
-## Bezpečnostní hranice
+## Local cockpit
 
-OATHDO v0.1 neobsahuje autonomní canonical writer. LLM může navrhnout text, ale nesmí schválit vlastní canonical zápis ani nahradit požadovanou lidskou authority.
+```bash
+./RUN_COCKPIT.command
+```
 
-## Aktuální governance milestone
+Default endpoint: `http://127.0.0.1:8765/`.
 
-R11 multi-actor authority model je canonical a fail-closed negativní enforcement je live ověřen. Finální stav `FULLY VERIFIED` vyžaduje ještě pozitivní live critical proof se dvěma rozdílnými non-author authority aktéry.
+The cockpit observes repository state only. It does not expose write, approval, merge, credential, or governance-bypass capability.
 
-Pokračuj na [rychlý start](getting-started.md) nebo na vysvětlení [governance modelu](governance-model.md).
+## Safety boundary
+
+OATHDO does not treat an LLM proposal as human authority. Canonical writes remain subject to the repository's policy and enforcement model.
+
+## Current state
+
+OATHDO is alpha-stage. The exact milestone and verification status are maintained in the repository's canonical [`PROJECT_STATE.md`](https://github.com/eimyroot/OATHDO/blob/main/PROJECT_STATE.md) and governed evidence.
+
+Continue to [Getting started](getting-started.md) or the [Governance model](governance-model.md).

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500" role="img" aria-labelledby="title desc">
+  <title id="title">OATHDO — Deterministic Governance Control Plane</title>
+  <desc id="desc">A dark technical banner showing the OATHDO change-to-evidence governance pipeline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#070913"/><stop offset=".52" stop-color="#0b1020"/><stop offset="1" stop-color="#080a12"/></linearGradient>
+    <radialGradient id="glowC" cx=".16" cy=".1" r=".65"><stop offset="0" stop-color="#65e5ff" stop-opacity=".22"/><stop offset="1" stop-color="#65e5ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowV" cx=".86" cy=".18" r=".52"><stop offset="0" stop-color="#9d86ff" stop-opacity=".22"/><stop offset="1" stop-color="#9d86ff" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".035"/></pattern>
+  </defs>
+  <rect width="1600" height="500" rx="26" fill="url(#bg)"/><rect width="1600" height="500" rx="26" fill="url(#glowC)"/><rect width="1600" height="500" rx="26" fill="url(#glowV)"/><rect x="1" y="1" width="1598" height="498" rx="25" fill="none" stroke="#26324e"/><rect width="1600" height="500" rx="26" fill="url(#grid)"/>
+  <g transform="translate(72 68)">
+    <rect width="54" height="54" rx="15" fill="#0c1523" stroke="#65e5ff" stroke-opacity=".85"/><path d="M17 27 27 15l10 12-10 12Z" fill="none" stroke="#65e5ff" stroke-width="2"/><circle cx="27" cy="27" r="4" fill="#9d86ff"/>
+    <text x="76" y="18" fill="#65e5ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700" letter-spacing="3">GOVERNANCE CONTROL PLANE</text>
+    <text x="0" y="151" fill="#f5f8ff" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="112" font-weight="800" letter-spacing="-7">OATHDO</text>
+    <text x="4" y="198" fill="#b9c6dc" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="24">Deterministic documentation governance for human + AI operated systems.</text>
+    <g transform="translate(4 253)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700">
+      <g fill="#0b1221" stroke="#293958"><rect width="112" height="46" rx="10"/><rect x="141" width="126" height="46" rx="10"/><rect x="296" width="104" height="46" rx="10"/><rect x="429" width="108" height="46" rx="10"/><rect x="566" width="118" height="46" rx="10"/><rect x="713" width="92" height="46" rx="10"/><rect x="834" width="112" height="46" rx="10"/></g>
+      <g fill="#d9e3f4"><text x="22" y="29">CHANGE</text><text x="159" y="29">CLASSIFY</text><text x="320" y="29">PLAN</text><text x="448" y="29">VERIFY</text><text x="581" y="29">AUTHORITY</text><text x="731" y="29">GATE</text><text x="851" y="29">EVIDENCE</text></g>
+      <g fill="#61728e" font-size="18"><text x="120" y="30">→</text><text x="275" y="30">→</text><text x="408" y="30">→</text><text x="545" y="30">→</text><text x="692" y="30">→</text><text x="813" y="30">→</text></g>
+    </g>
+    <text x="4" y="354" fill="#7d8da7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.4">FAIL-CLOSED · EXACT-HEAD · AUDITABLE · READ-ONLY COCKPIT</text>
+  </g>
+  <g transform="translate(1218 86)"><circle cx="128" cy="128" r="102" fill="none" stroke="#263653"/><circle cx="128" cy="128" r="74" fill="none" stroke="#65e5ff" stroke-opacity=".28"/><circle cx="128" cy="128" r="42" fill="#0b1220" stroke="#9d86ff" stroke-opacity=".7"/><path d="M128 62v32m0 68v32M62 128h32m68 0h32M81 81l23 23m48 48 23 23m0-94-23 23m-48 48-23 23" stroke="#65e5ff" stroke-opacity=".65" stroke-width="2"/><circle cx="128" cy="128" r="10" fill="#65e5ff"/><text x="128" y="280" text-anchor="middle" fill="#c5d1e5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="700" letter-spacing="2">TRUST BOUNDARY</text><text x="128" y="304" text-anchor="middle" fill="#7587a5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">OBSERVE ≠ AUTHORIZE</text></g>
+</svg>

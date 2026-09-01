@@ -44,9 +44,9 @@ compliance = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/nulleimy/OATHDO"
-Repository = "https://github.com/nulleimy/OATHDO"
-Issues = "https://github.com/nulleimy/OATHDO/issues"
+Homepage = "https://github.com/eimyroot/OATHDO"
+Repository = "https://github.com/eimyroot/OATHDO"
+Issues = "https://github.com/eimyroot/OATHDO/issues"
 
 [project.scripts]
 goverdocs = "goverdocs.cli:main"

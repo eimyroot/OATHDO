@@ -1,4 +1,4 @@
-.PHONY: install verify test lint typecheck health index
+.PHONY: install verify test lint typecheck health index cockpit cockpit-check
 
 install:
 	./scripts/bootstrap_local.sh
@@ -20,3 +20,9 @@ health:
 
 index:
 	.venv/bin/goverdocs rebuild-index --root .
+
+cockpit:
+	python3 scripts/cockpit.py --root .
+
+cockpit-check:
+	python3 scripts/cockpit.py --root . --check
