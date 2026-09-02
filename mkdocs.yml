@@ -1,8 +1,7 @@
 site_name: OATHDO
-site_description: Deterministická governance technické dokumentace
-site_url: https://nulleimy.github.io/OATHDO/
-repo_url: https://github.com/nulleimy/OATHDO
-repo_name: nulleimy/OATHDO
+site_description: Deterministic documentation governance for human + AI operated systems
+repo_url: https://github.com/eimyroot/OATHDO
+repo_name: eimyroot/OATHDO
 edit_uri: edit/main/site-docs/
 docs_dir: site-docs
 site_dir: site
@@ -10,7 +9,7 @@ strict: true
 
 theme:
   name: material
-  language: cs
+  language: en
   features:
     - navigation.instant
     - navigation.sections
@@ -19,17 +18,17 @@ theme:
     - content.code.copy
 
 nav:
-  - Přehled: index.md
-  - Začínáme: getting-started.md
+  - Overview: index.md
+  - Getting started: getting-started.md
   - Governance model: governance-model.md
-  - Kanonická dokumentace:
-      - Technická ústava: https://github.com/nulleimy/OATHDO/blob/main/WORLD_CLASS_SOFTWARE_DEVOPS_OPERATING_MODE.md
-      - Ústavní rámec: https://github.com/nulleimy/OATHDO/blob/main/GOVERDOCS_CONSTITUTIONAL_FRAMEWORK.md
-      - Produktový operating mode: https://github.com/nulleimy/OATHDO/blob/main/PRODUCT_DECISION_EXECUTION_OPERATING_MODE.md
-      - Změnová brána 10/10: https://github.com/nulleimy/OATHDO/blob/main/policies/CHANGE_GATE_10_OF_10.yaml
-      - Dokumentační index: https://github.com/nulleimy/OATHDO/blob/main/DOCUMENTATION_INDEX.md
-      - Projektový stav: https://github.com/nulleimy/OATHDO/blob/main/PROJECT_STATE.md
-      - Automatizační governance: https://github.com/nulleimy/OATHDO/blob/main/docs/governance/GOV-DOCUMENTATION-AUTOMATION.md
+  - Canonical documentation:
+      - Technical constitution: https://github.com/eimyroot/OATHDO/blob/main/WORLD_CLASS_SOFTWARE_DEVOPS_OPERATING_MODE.md
+      - Constitutional framework: https://github.com/eimyroot/OATHDO/blob/main/GOVERDOCS_CONSTITUTIONAL_FRAMEWORK.md
+      - Product operating mode: https://github.com/eimyroot/OATHDO/blob/main/PRODUCT_DECISION_EXECUTION_OPERATING_MODE.md
+      - Change gate 10/10: https://github.com/eimyroot/OATHDO/blob/main/policies/CHANGE_GATE_10_OF_10.yaml
+      - Documentation index: https://github.com/eimyroot/OATHDO/blob/main/DOCUMENTATION_INDEX.md
+      - Project state: https://github.com/eimyroot/OATHDO/blob/main/PROJECT_STATE.md
+      - Automation governance: https://github.com/eimyroot/OATHDO/blob/main/docs/governance/GOV-DOCUMENTATION-AUTOMATION.md
 
 markdown_extensions:
   - admonition

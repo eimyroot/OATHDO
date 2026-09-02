@@ -1,37 +1,42 @@
 # Governance model
 
-## Tok změny
+## Change flow
 
 ```text
-Project change
+Repository change
   → deterministic classification
   → decision matrix
   → operation plan
   → validation
-  → human approval
-  → future controlled writer
-  → registry, graph and audit receipt
+  → authority verification
+  → governance gate
+  → controlled execution where explicitly authorized
+  → registry, graph, and audit evidence
 ```
 
-Aktuální verze končí před controlled writerem.
+The exact capabilities available at any point in time are defined by canonical repository state and policy, not by presentation-layer claims.
 
-## Autorita
+## Authority
 
-1. Projektový filesystem a Git historie jsou canonical.
-2. Chat, export nebo ZIP jsou pouze snapshoty.
-3. Povolené operace určuje deterministická policy.
-4. LLM nemůže schválit vlastní výstup.
-5. Přijaté rozhodnutí se superseduje, nikoli tiše přepisuje.
-6. Selhání validace blokuje canonical write.
+1. Repository files and Git history are canonical.
+2. Chat transcripts, exports, ZIP files, and dashboards are snapshots or derived views.
+3. Deterministic policy defines allowed operation classes.
+4. An LLM cannot approve its own output or substitute for required human authority.
+5. Accepted decisions are superseded explicitly rather than silently overwritten.
+6. Validation or authority failure must not be converted into a canonical write.
 
 ## Write policy
 
-| Třída | Význam |
+| Class | Meaning |
 |---|---|
-| `automatic` | Strukturovaný, měnitelný projektový stav |
-| `append-only` | Chronologický registr s opravami formou nových záznamů |
-| `approval-required` | Canonical změnu musí schválit vlastník |
-| `immutable` | Přijatý důkaz se nemění |
-| `generated` | Odvozený výstup se přestavuje z canonical zdrojů |
+| `automatic` | Structured mutable project state allowed by policy |
+| `append-only` | Chronological register corrected through new entries |
+| `approval-required` | Canonical change requires the configured authority |
+| `immutable` | Accepted evidence is not rewritten |
+| `generated` | Derived output is rebuilt from canonical sources |
 
-Podrobné normativní znění zůstává v kanonických dokumentech repozitáře.
+## Cockpit boundary
+
+The local cockpit is a read-only observability surface. Its role is to make control-plane structure and repository state visible. It is intentionally separated from the deterministic kernel and must not become an implicit authorization or mutation path.
+
+Detailed normative rules remain in the canonical repository documents.

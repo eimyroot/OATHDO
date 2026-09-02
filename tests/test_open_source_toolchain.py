@@ -34,20 +34,21 @@ def test_mkdocs_portal_has_explicit_presentation_boundary() -> None:
     assert config["site_dir"] == "site"
     assert config["strict"] is True
     assert config["theme"]["name"] == "material"
+    assert config["theme"]["language"] == "en"
     assert {"index.md", "getting-started.md", "governance-model.md"} <= {
         path.name for path in (ROOT / "site-docs").glob("*.md")
     }
     portal = (ROOT / "site-docs/index.md").read_text(encoding="utf-8")
-    assert "není automaticky publikován" in portal
-    assert "Kanonickým zdrojem pravdy" in portal
+    assert "does not imply publication" in portal
+    assert "Canonical truth remains" in portal
 
 
 def test_reuse_configuration_and_license_copy_are_consistent() -> None:
     config = tomllib.loads(REUSE.read_text(encoding="utf-8"))
 
     assert config["version"] == 1
-    assert config["SPDX-PackageName"] == "GOVERDOCS"
-    assert config["SPDX-PackageDownloadLocation"] == "https://github.com/nulleimy/Goverdocs"
+    assert config["SPDX-PackageName"] == "OATHDO"
+    assert config["SPDX-PackageDownloadLocation"] == "https://github.com/eimyroot/OATHDO"
     assert config["annotations"][0]["path"] == ["*", "**/*"]
     assert config["annotations"][0]["SPDX-License-Identifier"] == "Apache-2.0"
     assert config["annotations"][-1]["precedence"] == "override"
@@ -126,11 +127,7 @@ def test_governance_records_and_generated_artifacts_are_current() -> None:
     assert status == {
         "generated_at": "2026-07-26T00:00:00+00:00",
         "document_count": 24,
-        "status_counts": {
-            "accepted": 7,
-            "active": 15,
-            "completed": 2,
-        },
+        "status_counts": {"accepted": 7, "active": 15, "completed": 2},
     }
     node_ids = {node["id"] for node in graph["nodes"]}
     assert {

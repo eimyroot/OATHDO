@@ -1,24 +1,24 @@
-# Začínáme
+# Getting started
 
-## Požadavky
+## Requirements
 
-- Python 3.11 až 3.13,
-- Git,
-- POSIX shell pro bootstrap skript.
+- Python 3.11 through 3.13
+- Git
+- POSIX shell for the bootstrap helper
 
-## Instalace
+## Installation
 
 ```bash
-git clone https://github.com/nulleimy/OATHDO.git
+git clone https://github.com/eimyroot/OATHDO.git
 cd OATHDO
 ./scripts/bootstrap_local.sh
 ```
 
-## CLI kompatibilita
+## CLI compatibility
 
-Produktový a repozitářový název je **OATHDO**. Python package a CLI v aktuální kompatibilní řadě stále používají jméno `goverdocs`.
+The product and repository are named **OATHDO**. The Python package and CLI remain named `goverdocs` in the current compatibility line.
 
-## První kontrola
+## First verification
 
 ```bash
 .venv/bin/goverdocs --version
@@ -27,20 +27,32 @@ Produktový a repozitářový název je **OATHDO**. Python package a CLI v aktu�
 .venv/bin/goverdocs health --root .
 ```
 
-## Analýza změny
+## Analyze a change
 
 ```bash
 .venv/bin/goverdocs classify --root . --diff HEAD~1..HEAD
 .venv/bin/goverdocs plan --root . --diff HEAD~1..HEAD
 ```
 
-Tyto příkazy analyzují a plánují. Canonical dokumentaci autonomně nemění.
+These commands analyze and plan. They do not autonomously rewrite canonical documentation.
 
-## Lokální build dokumentačního portálu
+## Run the local cockpit
+
+```bash
+./RUN_COCKPIT.command
+```
+
+For a terminal-only status check:
+
+```bash
+python3 scripts/cockpit.py --root . --check
+```
+
+## Build the documentation portal locally
 
 ```bash
 python -m pip install -e '.[docs]'
 mkdocs build --strict
 ```
 
-Výstup vznikne v ignorovaném adresáři `site/`. Publikace je samostatná, explicitně schvalovaná operace.
+Output is written to the ignored `site/` directory. Publication remains a separate explicit operation.

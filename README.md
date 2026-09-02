@@ -1,13 +1,15 @@
 <div align="center">
 
+<img src="assets/oathdo-banner.svg" alt="OATHDO — Deterministic Governance Control Plane" width="100%">
+
 # OATHDO
 
-### Deterministická governance technické dokumentace
+### Deterministic documentation governance for human + AI operated systems
 
-**Rozpoznej dopad změny. Naplánuj řízenou aktualizaci. Ověř pravidla. Zachovej auditní stopu.**
+**Detect impact. Plan controlled change. Verify policy. Bind authority. Preserve evidence.**
 
-[![Quality](https://github.com/nulleimy/OATHDO/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/nulleimy/OATHDO/actions/workflows/quality.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/nulleimy/OATHDO/badge)](https://scorecard.dev/viewer/?uri=github.com/nulleimy/OATHDO)
+[![Quality](https://github.com/eimyroot/OATHDO/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/eimyroot/OATHDO/actions/workflows/quality.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/eimyroot/OATHDO/badge)](https://scorecard.dev/viewer/?uri=github.com/eimyroot/OATHDO)
 ![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?logo=python&logoColor=white)
 [![License](https://img.shields.io/badge/License-Apache--2.0-2ea44f)](LICENSE)
 
@@ -15,72 +17,60 @@
 
 ---
 
-## Co je OATHDO?
+## What is OATHDO?
 
-**OATHDO** je open-source governance framework pro technickou dokumentaci a změnové řízení. Propojuje změny v repozitáři s dokumentací, rozhodnutími, schváleními a auditní evidencí, které mají změnu doprovázet.
+**OATHDO** is an open-source governance framework for technical documentation and repository change control. It connects repository changes with the documentation, decisions, approvals, policy checks, and audit evidence that should accompany them.
 
-Jeho deterministické jádro:
+Its deterministic core can:
 
-- klasifikuje dopad změněných souborů a Git diffu,
-- používá verzovanou rozhodovací matici,
-- připravuje vysvětlitelný plán dokumentačních operací,
-- ověřuje metadata, vztahy, supersession a lokální odkazy,
-- vynucuje schválení tam, kde je vyžadováno,
-- publikuje GitHub governance gate,
-- zachovává auditovatelnou stopu rozhodnutí a důkazů.
+- classify the impact of changed files and Git diffs;
+- evaluate a versioned decision matrix;
+- produce explainable documentation-operation plans;
+- validate metadata, relationships, supersession, and local links;
+- enforce approval and authority boundaries where policy requires them;
+- publish a GitHub governance gate;
+- preserve an auditable trail of decisions and evidence.
 
 > [!NOTE]
-> Produktový a repozitářový název je **OATHDO**. Python package a CLI zůstávají v aktuální kompatibilní řadě pojmenované `goverdocs`; jejich případný rename je samostatná breaking-change migrace.
+> The product and repository are named **OATHDO**. The Python package and compatibility CLI remain named `goverdocs` in the current release line. Renaming those interfaces would be a separate breaking-change migration.
 
-## Aktuální stav
+## Local cockpit
 
-| Vrstva | Stav |
-|---|---|
-| Deterministická klasifikace a decision matrix | ✅ dostupné |
-| Dokumentový registr a relationship graph | ✅ dostupné |
-| Validation / health / audit receipts | ✅ dostupné |
-| Reprodukovatelný package build | ✅ CI ověřováno |
-| GitHub required governance gate | ✅ server-side enforcement |
-| Exact PR + HEAD approval binding | ✅ aktivní |
-| Revocation semantics | ✅ aktivní |
-| Multi-actor authority model | ✅ canonical |
-| Anti-self-approval / separation of duties | ✅ live fail-closed ověřeno |
-| Finální pozitivní 2-actor critical quorum proof | 🔶 probíhá |
-| Autonomní canonical writer | ⛔ záměrně mimo aktuální release |
+OATHDO includes a **read-only local operator cockpit**. It observes repository and governance-control-plane state without exposing write, approval, merge, token, or bypass capability.
 
-**R11 se nepovažuje za FULLY VERIFIED, dokud neprojde pozitivní live critical proof se dvěma rozdílnými non-author authority aktéry.**
-
-## Authority model
-
-Pro kritické změny OATHDO používá explicitní role a capability model:
-
-```text
-project-owner
-  └─ approve:critical-owner
-
-independent-reviewer
-  └─ approve:critical-independent
-
-critical change
-  ├─ min. 2 distinct actors
-  ├─ min. 2 distinct roles
-  └─ PR author approval se do quorum nepočítá
+```bash
+git clone https://github.com/eimyroot/OATHDO.git
+cd OATHDO
+./RUN_COCKPIT.command
 ```
 
-Aktuálně role-bound identity:
+Default endpoint:
 
 ```text
-nulleimy     → project-owner
-setarchitect → independent-reviewer
+http://127.0.0.1:8765/
 ```
 
-## Operační model
+Headless / terminal-only check:
+
+```bash
+python3 scripts/cockpit.py --root . --check
+```
+
+Security boundary:
+
+- loopback-only by default;
+- non-loopback binding is refused unless `--allow-remote` is explicit;
+- HTTP surface is read-only;
+- no credentials or GitHub mutation APIs are exposed;
+- canonical truth remains repository files, Git history, policies, and evidence.
+
+## Control loop
 
 ```text
-Project change
+Repository change
       │
       ▼
-Change classification
+Deterministic classification
       │
       ▼
 Decision matrix
@@ -92,7 +82,7 @@ Operation plan
 Validation + evidence
       │
       ▼
-Exact-head authority approval
+Exact-subject / exact-head authority
       │
       ▼
 GOVERDOCS Governance Gate
@@ -101,27 +91,58 @@ GOVERDOCS Governance Gate
 GitHub server enforcement
 ```
 
-Název required status checku **`GOVERDOCS Governance Gate`** je zatím zachován jako kompatibilní technický context identifier. Jeho případný rename musí být proveden jako samostatná koordinovaná migrace workflow + rulesetu, aby nevznikla ochranná mezera.
+## Current status
 
-## Rychlý start
+OATHDO is an **alpha-stage governance system** with a substantial tested kernel, repository-level CI/security controls, explicit authority policy, and an active required governance gate on `main`.
 
-### Požadavky
+The repository intentionally does **not** equate a green badge with broad production readiness. Canonical milestone and verification state live in [`PROJECT_STATE.md`](PROJECT_STATE.md) and the governed evidence under [`docs/governance/`](docs/governance/).
 
-- Python 3.11, 3.12 nebo 3.13,
-- Git,
-- POSIX shell pro lokální bootstrap.
+Known compatibility boundary: `GOVERDOCS Governance Gate` remains the required GitHub check context. Renaming that identifier must be a coordinated workflow + ruleset migration to avoid a protection gap.
+
+## Architecture
+
+```text
+                         OATHDO
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+      Deterministic kernel        Operator surfaces
+       src/goverdocs/*              cockpit/*
+              │                         │
+              ├─ classifier             └─ read-only local status
+              ├─ decision policy
+              ├─ planner
+              ├─ validator
+              ├─ authority
+              ├─ evidence
+              └─ GitHub adapters
+              │
+              ▼
+     policies / manifests / schemas
+              │
+              ▼
+      GitHub governance enforcement
+```
+
+The cockpit is deliberately kept outside the kernel package. Presentation and observability must not silently become an authorization path.
+
+## Quick start
+
+### Requirements
+
+- Python 3.11, 3.12, or 3.13;
+- Git;
+- POSIX shell for the bootstrap helper.
 
 ```bash
-git clone https://github.com/nulleimy/OATHDO.git
+git clone https://github.com/eimyroot/OATHDO.git
 cd OATHDO
-
 ./scripts/bootstrap_local.sh
-
 .venv/bin/goverdocs --version
 .venv/bin/goverdocs health --root .
 ```
 
-Základní workflow:
+Basic governance workflow:
 
 ```bash
 .venv/bin/goverdocs inspect --root .
@@ -131,74 +152,55 @@ Základní workflow:
 .venv/bin/goverdocs health --root . --receipt
 ```
 
-## Architektura
+## Repository map
 
-```text
-Git diff / changed files
-          │
-          ▼
-Classifier ──→ Decision Matrix ──→ Planner
-          │
-          ▼
-Validator ──→ Approval Verification ──→ Authority Policy
-          │                                  │
-          └──────────────→ Gate Report ←─────┘
-                               │
-                               ▼
-                    GitHub Required Check
-                               │
-                               ▼
-                    Repository Ruleset
+| Path | Responsibility |
+|---|---|
+| `src/goverdocs/` | Deterministic governance kernel and GitHub adapters |
+| `automation/` | Decision matrix and documentation policy |
+| `policies/` | Authority and change-gate policy |
+| `schemas/` | Public governance/evidence schemas |
+| `manifests/` | Derived document registry and relationship graph |
+| `docs/` | Canonical architecture, decisions, governance, operations, reviews |
+| `evidence/` | Baselines and local receipt boundary |
+| `cockpit/` | Read-only operator UI |
+| `scripts/` | Bootstrap, verification, distribution, and cockpit helpers |
+| `tests/` | Contract, unit, enforcement, packaging, and security tests |
+| `site-docs/` | Derived documentation portal source |
+
+## Verification
+
+```bash
+./scripts/bootstrap_local.sh
+./scripts/verify.sh
+python3 scripts/cockpit.py --root . --check
 ```
 
-## Roadmapa
+The standard verification path runs linting, static typing, tests, documentation validation, and health checks. CI additionally verifies the release/distribution path.
 
-### R11 — Governance Authority / Multi-Actor Trust
+## Security principles
 
-- [x] explicit authority model,
-- [x] role capabilities,
-- [x] actor binding,
-- [x] anti-self-approval,
-- [x] separation of duties,
-- [x] fail-closed solo-actor proof,
-- [x] `setarchitect` enrollment jako `independent-reviewer`,
-- [ ] neutral-author critical proof,
-- [ ] exact-head approval `nulleimy`,
-- [ ] exact-head approval `setarchitect`,
-- [ ] required governance gate PASS,
-- [ ] server-side exact-head merge,
-- [ ] post-merge Quality + CodeQL,
-- [ ] R11 = FULLY VERIFIED.
+- fail closed;
+- exact-subject / exact-head approvals where required;
+- no self-approval for critical changes;
+- no weakening of repository enforcement to make a test pass;
+- no fabricated authority actors;
+- least privilege and explicit capability boundaries;
+- missing or unverifiable evidence must never be silently upgraded to success;
+- LLM-generated proposals are not equivalent to human authority.
 
-### Následující produktová vrstva
+See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
 
-Po uzavření R11 má smysl pokračovat v tomto pořadí:
+## Documentation
 
-1. **Authority hardening** — stabilní enrollment lifecycle, audit identity bindingu a provozní recovery.
-2. **Controlled writer boundary** — explicitně autorizovaný canonical write bez přeskakování governance gate.
-3. **Operation proof / immutable evidence** — doložitelný vztah intent → authority → execution → post-state.
-4. **Runtime adapters** — bezpečné napojení na externí vývojové a AI runtime systémy.
-5. **Release hardening** — stabilní veřejné kontrakty, migration policy a compatibility guarantees.
+- [`PROJECT_STATE.md`](PROJECT_STATE.md) — canonical project state;
+- [`DOCUMENTATION_INDEX.md`](DOCUMENTATION_INDEX.md) — governed documentation index;
+- [`docs/architecture/`](docs/architecture/) — system architecture;
+- [`docs/governance/`](docs/governance/) — governance model and evidence;
+- [`policies/`](policies/) — policy and enforcement contracts;
+- [`site-docs/`](site-docs/) — documentation portal source;
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution contract.
 
-## Bezpečnostní principy
+## License
 
-- fail closed,
-- exact-subject approval,
-- žádné self-approval pro critical změny,
-- žádné oslabení rulesetu kvůli testu,
-- žádný fabricated authority actor,
-- historie a evidence se neinterpretují jako aktuální autorita bez ověření,
-- LLM může připravit návrh, ale nesmí samo vytvořit platnou lidskou authority.
-
-## Dokumentace
-
-- [`PROJECT_STATE.md`](PROJECT_STATE.md) — stav projektu,
-- [`DOCUMENTATION_INDEX.md`](DOCUMENTATION_INDEX.md) — dokumentový index,
-- [`docs/governance/`](docs/governance/) — governance model a evidence,
-- [`docs/architecture/`](docs/architecture/) — systémová architektura,
-- [`policies/`](policies/) — policy a enforcement kontrakty,
-- [`site-docs/`](site-docs/) — zdroj dokumentačního portálu.
-
-## Licence
-
-Apache-2.0. Viz [`LICENSE`](LICENSE).
+Apache-2.0. See [`LICENSE`](LICENSE).

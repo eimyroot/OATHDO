@@ -1,24 +1,35 @@
-# Jak přispívat do OATHDO
+# Contributing to OATHDO
 
-Změny musí být malé, přezkoumatelné, otestované a vratné.
+Changes should be small, reviewable, tested, evidence-aware, and reversible.
 
-## Postup
+## Workflow
 
-1. U významné změny založ nebo uveď související issue.
-2. Vytvoř úzce zaměřenou větev z výchozí větve repozitáře.
-3. Implementuj nejmenší úplnou změnu řešící deklarovaný problém.
-4. Doplň testy a dokumentaci.
-5. Spusť ověřovací příkazy uvedené v repozitáři.
-6. Otevři pull request s riziky, důkazy a rollbackem.
+1. Reference or create a related issue for material changes.
+2. Create a narrowly scoped branch from the repository's current default branch.
+3. Implement the smallest complete change that resolves the declared problem.
+4. Add or update tests and documentation where the behavior or contract changes.
+5. Run the repository verification commands.
+6. Open a pull request that states rationale, affected scope, evidence, risk, and rollback.
 
-## Standard pull requestu
+## Pull request standard
 
-Pull request musí uvést:
+A pull request should state:
 
-- co a proč se změnilo;
-- co zůstalo vědomě mimo rozsah;
-- ověřovací příkazy a výsledky;
-- bezpečnostní, kompatibilitní, datová a provozní rizika;
-- způsob návratu nebo bezpečného vypnutí.
+- what changed and why;
+- what is intentionally out of scope;
+- verification commands and observed results;
+- security, compatibility, data, and operational risks;
+- rollback or safe-disable procedure;
+- governance approvals required by the affected change class.
 
-Nikdy necommituj tajné údaje, osobní data, lokální databáze, runtime stav ani neověřené výroky. Zelený check dokládá jen rozsah, který daný check skutečně testoval.
+Do not commit secrets, personal data, local databases, runtime state, or claims that have not been verified. A green check proves only the scope that the check actually evaluates.
+
+## Verification
+
+```bash
+./scripts/bootstrap_local.sh
+./scripts/verify.sh
+python3 scripts/cockpit.py --root . --check
+```
+
+If a change affects authority, enforcement, workflows, rulesets, or canonical governance documents, treat it as a control-plane change and preserve the required independent review path.
