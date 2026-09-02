@@ -2,12 +2,17 @@
 
 ## Unreleased
 
-- added a strict MkDocs Material documentation portal build without automatic deployment,
-- added a GOVERDOCS-specific ADR template inspired by MADR,
-- added REUSE 3.3 compliance metadata and CI linting,
-- added a SHA-pinned OpenSSF Scorecard workflow with SARIF reporting,
-- recorded third-party versions, licences and adoption boundaries,
-- accepted exact-SHA local and remote readiness evidence and completed WB-0002.
+## 0.2.0 — 2026-09-02
+
+- established the public OATHDO identity while preserving the compatible `goverdocs` Python package and CLI surface,
+- added the read-only localhost governance cockpit with safe loopback defaults and no write, approval, merge, token, or bypass capability,
+- added the OATHDO repository banner and refreshed the public repository presentation,
+- translated the public README, CONTRIBUTING, SECURITY, INSTALLATION, and MkDocs portal surface to English,
+- corrected stale public repository links and portable installation guidance,
+- added cockpit safety and inventory coverage,
+- preserved the deterministic governance kernel boundary under `src/goverdocs/`,
+- retained REUSE compliance, OpenSSF Scorecard coverage, reproducible package builds, and governance evidence workflows,
+- completed the closure change through the repository's exact-head governance path with owner and independent authority approval.
 
 ## 0.1.0 — 2026-07-24
 
